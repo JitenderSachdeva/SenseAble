@@ -1,0 +1,16 @@
+.has-search .form-control {
+    padding-left: 2.375rem;
+}
+
+.main-sidebar {
+    height: inherit;
+    min-height: 100%;
+    position: absolute;
+    top: 58px;
+}
+:not(.layout-fixed) .main-sidebar {
+    height: inherit;
+    min-height: 100%;
+    position: absolute;
+    top: auto;
+}

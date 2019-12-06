@@ -1,0 +1,53 @@
+@import './Asset/css/adminlte.min.css';
+@import './Asset/plugins/fontawesome-free/css/all.min.css';
+@import './Asset/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css';
+@import './Asset/plugins/icheck-bootstrap/icheck-bootstrap.min.css';
+@import './Asset/plugins/jqvmap/jqvmap.min.css';
+@import './Asset/plugins/overlayScrollbars/css/OverlayScrollbars.min.css';
+@import './Asset/plugins/daterangepicker/daterangepicker.css';
+@import './Asset/plugins/summernote/summernote-bs4.css';
+@import 'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700';
+
+App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.App-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+}
+
+.content-wrapper {
+    background:white;
+}
