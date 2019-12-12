@@ -22,7 +22,7 @@ function Sidebar() {
             <p>Dashboard</p>
               </div> */}
             </div>
-https://meet.google.com/cbn-znwm-ejy?authuser=1
+
       <nav className="mt-2">
               <ul className="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 

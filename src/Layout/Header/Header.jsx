@@ -28,8 +28,8 @@ class Header extends Component {
   }
 
   logout(){
-    sessionStorage.setItem('userData','');
-    sessionStorage.clear();
+    localStorage.setItem('userData','');
+    localStorage.clear();
     this.setState({redirect: true});
   }
   render() {

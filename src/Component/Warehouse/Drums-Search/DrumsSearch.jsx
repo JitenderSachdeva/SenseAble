@@ -14,8 +14,6 @@ class DrumsSearch extends Component {
     this.state = {
       active: true,
       off: false,
-      redirect: false,
-      tokenid: '',
       drumName: '',
       drumType: '',
       cableType: '',
@@ -30,93 +28,34 @@ class DrumsSearch extends Component {
     this.toggle = this.toggle.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (sessionStorage.getItem('userData', '')) {
-  //     console.log(sessionStorage);
-  //   } else {
-  //     this.setState({ redirect: true });
-  //   }
-  // }
-  async token() {
-    const response = await (localStorage.getItem('userData',''))
-    //  let responseJson = result;
-      //console.log(responseJson);
-
-      console.log(response(localStorage));
-     }
-      // .then((result) =>{
-      // console.log(result);
-      // });
-      // if (responseJson.token) {
-      //   console.log(responseJson.token);
-      // } else {
-      //   console.log(responseJson.token);
-      // }
-
-    // PostData(this.state).then((result) => {
-    //   let responseJson = result;
-    //   sessionStorage.setItem('userData',responseJson);
-
-    // })
-
-  //}
-
   handleChange(event) {
     const name = event.target.name;
     const value = event.target.value;
 
-    this.setState({
-      [name]: value
-    });
+    this.setState({ [name]: value});
   }
-
-
 
   handleSubmit(event) {
     event.preventDefault();
-
-    var body = {
-
-      drumName: 'test',
-      drumType: 'test',
-      cableType: '1kb',
-      drumDiameter: '8',
-      cableLength: '8',
-      cableDiameter: '4',
-      location: '1',
-      status: 'A',
-
-    }
-
-    axios({
-      method: 'post',
-      url: 'http://localhost:8182/drum/drums/',
-      data: body,
+    const tokenn = localStorage.getItem('userToken' );
+    console.log(tokenn);
+    const obj = {
+      drumName: this.state.drumName,
+      drumType: this.state.drumType,
+      cableType: this.state.cableType,
+      drumDiameter: this.state.drumDiameter,
+      cableLength: this.state.cableLength,
+      cableDiameter: this.state.cableDiameter,
+      location: this.state.location,
+    };
+console.log(obj);
+    axios.post(('http://localhost:8182/drum/drums'),obj,{
       headers: {
-        'Content-Type': 'application/json',
-        'X-Auth-Token': (PostData)
+      'Content-Type': 'application/json',
+      'X-Auth-Token': tokenn
     }
     })
-      .then(function (response) {
-        //handle success
-        console.log(response);
-      })
-      .catch(function (response) {
-        //handle error
-        console.log(response);
-      });
-    // const obj = {
-    //   token: this.state.token,
-    //   drumName: this.state.drumName,
-    //   drumType: this.state.drumType,
-    //   cableType: this.state.cableType,
-    //   drumDiameter: this.state.drumDiameter,
-    //   cableLength: this.state.cableLength,
-    //   cableDiameter: this.state.cableDiameter,
-    //   location: this.state.location,
-    // };
-    // axios.post('http://localhost:8182/drum/drums', obj)
-    // .then(res => console.log(res.data));
+    .then(res => console.log(res.data));
     // this.setState({
     //   drumName: '',
     //   drumType: '',
@@ -145,13 +84,13 @@ class DrumsSearch extends Component {
           <div class="container">
             <div className="row">
               <div className="col-md-2">
-                &nbsp;  <h3>Drums</h3>
+                &nbsp;<h3>Drums</h3>
               </div>
 
               <div className="col-md-7"></div>
               <div style={{ marginRight: "20px", marginLeft: "15px", float: "right" }}>
                 &nbsp;
-                  <input data-toggle="modal" data-target="#exampleModal" type="button" value="Register New Drum"
+                  <input data-toggle="modal" data-target="#NewModal" type="button" value="Register New Drum"
                   onClick={this.token} className="test btn btn-block btn-primary" />
               </div>
               <div style={{ marginTop: "30px" }}>
@@ -189,7 +128,8 @@ class DrumsSearch extends Component {
             {this.state.off && <DrumMap />}
             {this.state.active && <DrumMapTable />}
           </div>
-          <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal fade" id="NewModal" tabindex="-1" role="dialog"
+           aria-labelledby="exampleModalLabel" aria-hidden="true">
             <form onSubmit={this.handleSubmit}>
               <div class="modal-dialog" role="document">
                 <div class="modal-content">

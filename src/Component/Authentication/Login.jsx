@@ -25,6 +25,9 @@ class Login extends Component {
 			console.log(responseJson);
 			if (responseJson.token) {
 				localStorage.setItem('userData', responseJson);
+				localStorage.setItem('userToken', responseJson.token);
+
+				console.log(responseJson.token)
 				this.setState({ redirect: true });
 			} else {
 				console.log('Login Error!');
@@ -46,7 +49,7 @@ class Login extends Component {
 			return (<Redirect to={'/login'} />);
 		}
 
-		if (sessionStorage.getItem('userData')) {
+		if (localStorage.getItem('userData')) {
 			return (<Redirect to={'/DrumsSearch'} />);
 		}
 		return (
@@ -60,7 +63,7 @@ class Login extends Component {
 					<div class="card">
 						<div class="card-body login-card-body">
 							<h3 class="login-box-msg">Login</h3>
-						<p>Sign In to your account</p>
+							<p>Sign In to your account</p>
 
 							<form action="../../index3.html" method="post">
 								<div class="input-group mb-3">
@@ -85,9 +88,9 @@ class Login extends Component {
 									<div class="col-8">
 										<div class="icheck-primary">
 											<input type="checkbox" id="remember" />
-						<p class="mb-1">
-							<a href="forgot-password.html">I forgot my password</a>
-						</p>
+											<p class="mb-1">
+												<a href="forgot-password.html">I forgot my password</a>
+											</p>
 										</div>
 									</div>
 									<div class="col-4">
@@ -98,7 +101,7 @@ class Login extends Component {
 							</form>
 						</div>
 					</div>
-					</div>
+				</div>
 			</body>
 		)
 	}
